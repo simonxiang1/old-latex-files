@@ -1,0 +1,477 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, IEEEtrantools}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{circuitikz}
+\usepackage{float}
+\usepackage{caption}
+\newcommand*{\equal}{=}
+
+\title{Representation of Mathematical Expressions in \LaTeX}
+\author{Simon Xiang}
+\date{\today}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+ 
+        \Huge
+        \textbf{Experiment 4: Series and Parallel Circuits}
+ 
+        \vspace{0.5cm}
+        \LARGE
+        PHYS LAB 2240
+ 
+        \vspace{1.5cm}
+ 
+        \textbf{Simon Xiang}
+ 
+        \vfill
+  
+        \vspace{0.8cm}
+ 
+        \Large
+        Physics Lab Section 502\\
+        University of North Texas\\
+        \today
+ 
+    \end{center}
+\end{titlepage}
+
+\section{Abstract}
+The objective of this experiment was to show the inner workings of circuits in parallel and series and calculate
+their respective equivalent resistances. To do this, four circuits were set up, giving the experimenter hands on
+circuit experience in the laboratory. Another objective of this experiment was to show how lightbulbs behaved when
+connected in series and in parallel.
+
+Our results were extremely precise and reflected the accuracy of the theoretical formula for deriving $R_{eq}$ as
+opposed to the experimental method. The average percent difference between the two $R_{eq}$ values across all four 
+circuit diagrams was $1.29\%$, showing that our experimental results are consistent with Ohm's Law due to the extremely
+low percent difference. This experiment's significance is that it demonstrates one of the most fundamental laws in physics (Ohm's Law), 
+shows how to calculate resistance of circuits in series and parallel, and gives hands on experience in the lab, with
+future applications including setting up circuits and anything involving resistors.
+\section{Introduction}
+Several fundamental concepts are demonstrated within this experiment. The first is Ohm's Law, mathematically given 
+by the formula
+\begin{equation} \label{eq:1}
+    V = IR, 
+\end{equation}
+where $V$ is the voltage through a given conductor, $I$ is the current through such conductor, and $R$ being defined as 
+the ratio $V/I$. The voltage $V$ is measured in volts ($1 V = 1 \frac{J}{C}$), the current $I$ is measured in amperes ($1 A = 1 \frac{C}{s}$),
+and the resistance $R$ is measured in ohms ($1 \Omega = 1 \frac{V}{A} = 1 \frac{J \cdot s}{C^2}$). 
+
+In the case of a device that obeys Ohm's Law, such resistance $R$ is constant, and such devices
+are said to be Ohmic. Resistors are known to be Ohmic. We define an \textbf{equivalent resistor} as a resistor that can replace a more complex circuit,
+i.e., produce the same amount of current when the same amount of voltage is applied. Refer to Figure 1 for the circuit diagram
+of two resistors in series:
+\begin{figure}[ht]
+    \begin{minipage}[b]{0.45\linewidth}
+        \begin{circuitikz} \draw
+            (0,0) to[short, l^=$I \bigg\uparrow $,-*] (0,4)
+            (0,4) to[R,l^=$R_1$, -] (2,4)
+            (2,4) to[R,l^=$R_2$, -*] (4,4)
+            (4,4) to[short, l^=$\bigg\downarrow I$] (4,0)
+            (4,0) to[C,l_=$V$] (0,0);
+        \end{circuitikz}
+    \caption{Resistors in series.}
+    \label{fig:1}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.45\linewidth}
+    \begin{circuitikz} \draw
+        (0,0) to[short, l^=$I \bigg\uparrow $,-*] (0,4)
+        (0,4) to[R,l^=$R_{eq}$, -*] (4,4)
+        (4,4) to[short, l^=$\bigg\downarrow I$] (4,0)
+        (4,0) to[C,l_=$V$] (0,0);
+    \end{circuitikz}
+    \caption{Equivalent resistor.}
+    \label{fig:2}
+\end{minipage}
+\end{figure}
+We have by the conservation of energy 
+\begin{equation*}
+    V = V_1 + V_2
+\end{equation*}
+for two resistors in series. Consider Ohm's Law: since $V_1 = IR_1$, $V_2 = IR_2$, we have
+\begin{equation*}
+        V = IR_1 + IR_2=I(R_1 + R_2).
+\end{equation*}
+So
+\begin{equation*}
+    R_1+R_2 = \frac{V}{I},
+\end{equation*}
+and we conclude that 
+\begin{equation} \label{eq:2}
+    R_{eq} = R_1 + R_2.     
+\end{equation}
+This can be represented by the following circuit diagram anagalous to Figure 1, shown in Figure 2.
+In the case that the resistors are in parallel, we have
+\begin{equation*}
+    V = V_1 = V_2,
+\end{equation*}
+since each resistor recieves all the current. Refer to the circuit diagram given by Figure 3 for more information. By Ohm's Law and the conversation of charge, we have
+\begin{equation*}
+    I = I_1 + I_2 = \frac{V}{R_1} + \frac{V}{R_2},
+\end{equation*}
+therefore 
+\begin{equation*}
+    \frac{1}{R_1} + \frac{1}{R_2} = \frac{I}{V},
+\end{equation*}
+so we can safely conclude that
+\begin{equation*}
+    \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2}.
+\end{equation*}
+Some simple algebra yields the equation
+\begin{equation} \label{eq:3}
+    R_{eq} = \frac{R_1R_2}{R_1 + R_2}.
+\end{equation}
+See Figure 4 for an example of what the equivalent resistor for resistors in parallel look like.
+\begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+        \begin{circuitikz} \draw
+            (0,0) to[short, l^=$I \Big\uparrow $] (0,2)
+            (0,2) to[short, l^=$I_1 \Big\uparrow $] (0,4)
+            (0,4) to[short] (1,4)
+            (1,4) to[R,l^=$R_1$] (4,4)
+            (4,4) to[short] (5,4)
+            (5,4) to[short] (5,0)
+            (5,0) to[C,l_=$V$] (0,0);
+            \draw
+            (0,2) to[short,l^=$\xrightarrow{I_2}$] (1,2)
+            (1,2) to[R,l^=$R_2$] (4,2)
+            (4,2) to[short] (5,2);
+        \end{circuitikz}
+        \caption{Resistors in parallel.}
+        \label{fig:3}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.45\linewidth}
+    \begin{circuitikz} \draw
+        (0,0) to[short, l^=$I \Big\uparrow $] (0,3)
+        (0,3) to[R,l^=$R_{eq}$] (5,3)
+        (5,3) to[short] (5,0)
+        (5,0) to[C,l_=$V$] (0,0);
+    \end{circuitikz}
+    \caption{Equivalent resistor for resistors in parallel.}
+    \label{fig:4}
+\end{minipage}
+\end{figure}
+\section{Apparatus}
+Apparatus used include an AC/DC Electronics lab, a Digital Storage Oscilloscope and its probes, a DMM (Digital Multimeter),
+a DC Power Supply, six resistors, and three lightbulbs.
+
+The six resistor bands came in two sets of three resistance levels, being $330 \Omega, 560 \Omega$, and 
+$1000 \Omega$ respectively. The DMM was crucial in experimentally determining the resistance of such resistors
+and verifying whether they fell within the percent error indicated by the color of the last band of the resistor 
+($\pm 5\%$ for this experiment). The DMM also measured the current of the entire circuit, powered by the 
+DC power supply itself. Finally, current was provided to the lightbulbs to demonstrate how they changed (or didn't) in brightness as current varied
+for the last portion of the experiment.
+\section{Experimental Procedure}
+\subsection*{Part A: Series and Parallel Resistor Circuits}
+Preceding the experiment, the DMM was used to measure the resistance values for the six resistors and verify that they indeed
+fell within the given percent error indicated by the color of the last band on the resistors. 
+
+Consider the following four circuit diagrams on the page below- we will
+refer to them heavily when describing the experimental procedure. 
+\begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+        \begin{circuitikz} \draw
+            (0,0) to[R,l^=\small$R_{2} \equal 560\Omega$, o-] (2.5,0)
+            (2.5,0) to[R,l^=\small$R_{1} \equal 330\Omega$, -o] (5,0);
+        \end{circuitikz}
+    \caption*{Circuit Diagram 1: Series}
+    \label{fig:cd1}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.45\linewidth}
+    \begin{circuitikz} \draw
+        (0,0) to[R,l_=\small$R_{2} \equal 560\Omega$] (0,2.5)
+        (0,2.5) to[short, -o] (5,2.5)
+        (0,0) to[short, -o] (5,-0)
+        (2.5,0) to[R,l_=\small$R_{1} \equal 330\Omega$] (2.5,2.5);
+    \end{circuitikz}
+    \caption*{Circuit Diagram 2: Parallel}
+    \label{fig:cd2}
+\end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+        \begin{circuitikz} \draw
+            (0,0) to[R,l_=\small$R_{2} \equal 560\Omega$] (0,2.5)
+            (0,2.5) to[short, -o] (5,2.5)
+            (2.5,0) to[R,l_=\small$R_{1} \equal 330\Omega$] (2.5,2.5)
+            (0,0) to[short] (2.5,0)
+            (2.5,0) to[R,l^=\small$R_{3} \equal 1000\Omega$, -o] (5,0);
+        \end{circuitikz}
+    \caption*{Circuit Diagram 3: Simple Series Parallel}
+    \label{fig:cd3}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.45\linewidth}
+    \begin{circuitikz} \draw
+        (0,0) to[short, -o] (6,0)
+        (0,0) to[R,l_=\footnotesize$R_{6} \equal 330\Omega$] (0,2.5)
+        (2,0) to[R,l_=\footnotesize$R_{5} \equal 560\Omega$] (2,2.5)
+        (4,0) to[R,l_=\footnotesize$R_{2} \equal 560\Omega$] (4,2.5)
+        (0,2.5) to[R,l^=\footnotesize$R_{4} \equal 1000\Omega$] (2,2.5)
+        (2,2.5) to[R,l^=\footnotesize$R_{1} \equal 330\Omega$] (4,2.5)
+        (4,2.5) to[R,l^=\footnotesize$R_{3} \equal 1000\Omega$, -o] (6,2.5);
+    \end{circuitikz}
+    \caption*{Circuit Diagram 4: Complex Series Parallel}
+    \label{fig:cd4}
+\end{minipage}
+\end{figure}
+
+    The experiment began by setting up the circuit according to Circuit Diagram 1 above. Following,
+    the DMM was inserted \textbf{in series}, since the circuit was set up in series. After adjusting the 
+    DMM to the proper units ($mA$), the DC power supply was activated and a quick check was done to see that
+    both the voltage and current were set to zero by turning their respective knobs to zero on the power supply.
+    Then, the power supply and DMM were connected to the circuit, and the voltage on the DC Power Supply was set to $15.00 V$.
+    Using the current knob, the current was \textbf{slowly} increased with small additions (about $0.010 A$) until
+    a voltage of $15.00 V$ was reached. From this, the DMM was used to measure the current, and the power supply was turned off.
+
+In terms of calculations, the \textit{theoretical} $R_{eq}$ was calculated by referring to Equation \ref{eq:2} since the circuit
+was set up in series. Particular care was taken in making sure that the measured values were used for the resistance
+as opposed to the given base values. The \textit{measured} $R_{eq}$ was calculated by Ohm's law (Equation \ref{eq:1}).
+Then, the percent difference between the two values was calculated using the handy formula
+\begin{equation} \label{eq:4}
+    \text{Percent Difference} = \frac{\mid \!theoretical - measured \mid}{\frac{\mid theoretical + measured \mid}{2}} \cdot 100\%.
+\end{equation}
+Now the circuit was disassembled and re-setup in the pattern of Circuit Diagram 2, in parallel. Everything following the step 
+when the voltage on the DC Power Supply was set to $15.00 V$ was repeated for the newly setup circuit. Something particular to note 
+was that the theoretical $R_{eq}$ was calculated using Equation \ref{eq:3} as opposed to Equation \ref{eq:2} since
+the circuit was set up in parallel. This pattern followed for Circuit Diagrams 3 and 4. For Circuit Diagram 3, 
+the theoretical $R_{eq}$ was calculated by first considering $R_1$ and $R_2$ in parallel, then considering the resultant
+$R_{eq}$ in series with $R_3$. This is shown in Equation \ref{eq:5} in the Calcuations section below. For Circuit Diagram 4, $R_4$ and $R_6$ were considered in series, then the resultant equivalent resistor
+was considered in parallel with $R_5$. Then, such resultant equivalent resistor was considered in series with $R_1$, which was then
+considered in parallel with $R_2$, which was then finally considered in series with $R_3$ to complete the calculation of the 
+equivalent resistor of the entire circuit, represented by Equation \ref{eq:6}.
+
+A detailed mathematical representation of these calculations can be found in the Calculations section of this report.
+\subsection*{Part B: Series and Parallel Lightbulb Circuits}
+Unfortunately I am unaware of the capabilities of \LaTeX{} to generate lightbulb figures, so the terms "series", "parallel", and "series parallel"
+will have to do when describing the setup of the circuit board. We begin by connecting lightbulb A in series to the power supply
+and setting the voltage to $2.00V$. Once again, we slowly increase the current to reach $2.00V$ (we expect to end somewhere about $0.260A$).
+Using the values \textit{displayed on the power supply}, we determine the resistance of A by Ohm's Law (Equation \ref{eq:1}).
+Rinse and repeat for lightbulbs B and C. After determining the resistance of all three bulbs, set up the lightbulbs A and B in series and determine
+the resistance. Then, set up lightbulbs A and B in parallel and determine the resistance. Finally, set up all three lightbulbs in the
+series parallel setup and determine the resistance. 
+
+
+Some issues included a resistor breaking in half halfway through the experiment, and the peculiar case of the lightbulbs
+lighting up in the wrong order even with a correct setup as verified by our lab TA's. The first problem was resolved by grabbing 
+a new resistor from another table since we hadn't used that particular resistor yet at that point in time. The second problem was never resolved.
+
+\section{Data}
+\textbf{Table 1}: Data obtained from measuring the resistance values of the six given resistors with the DMM.
+These values were used to calculate the theoretical resistance in junction with the derived equations for $R_{eq}$.
+\renewcommand{\arraystretch}{1.5}
+\renewcommand{\tabcolsep}{0.2cm}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $R_1 = 330\Omega$ & $R_2 = 560\Omega$ & $R_3 = 1000\Omega$ & $R_4 = 1000\Omega$ & $R_5 = 560\Omega$ & $R_6 = 330\Omega$\\ 
+        \hline
+        $325.5\Omega$ & $544\Omega$ & $978\Omega$ & $980\Omega$ & $552\Omega$ & $324.3\Omega$ \\
+        \hline
+    \end{tabular}
+\end{center}
+\vspace{2cm}
+\textbf{Table 2}: Data obtained from experimentally determing the value(s) of $R_{eq}$ for each circuit diagram.
+Here, the data from Table 1 was used to calculate the theoretical $R_{eq}$, the measured current and $R_{eq}$ were experimentally determined
+in junction with Ohm's Law (with $V$ being a constant $15V$, see Equation \ref{eq:1}), and the percent difference was calculated with
+Equation \ref{eq:4}. These calculations are all shown in the manual calculation section of this lab report.
+\begin{center}
+    \begin{tabular}{|m{2cm}|m{2cm}|m{2cm}|m{2cm}|m{2cm}|}
+        \hline
+        Circuit \qquad Diagram & Theoretical $R_{eq} (\Omega)$ & Measured Current $(mA)$ & Measured $R_{eq} (\Omega) $ & Percent \quad Difference\\ 
+        \hline
+        1 & 869.5 & 17.1 & 877.2 & 0.88\%\\ 
+        \hline
+        2 & 203.65 & 71.2 & 210.7 & 3.39\%\\ 
+        \hline
+        3 & 1181.65 & 12.6 & 1190.5 & 0.74\%\\ 
+        \hline
+        4 & 1291.28 & 11.6 & 1293.1 & 0.14\%\\ 
+        \hline
+    \end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{Table 3:} Finally we reach the table of data for the lightbulb portion of this experiment. These values are entirely
+experimental and were all measured from the reading off of the power supply and letting the voltage $V$ equal two volts and solving
+for resistance by Ohm's Law. 
+\begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    Bulb System & Measured Resistance $(\Omega)$ \\
+    \hline
+    A & 7.38 \\
+    \hline
+    B & 8.13 \\
+    \hline
+    C & 15.873 \\
+    \hline
+    A\&B Series & 10.582 \\
+    \hline
+    A\&B Parallel & 3.914 \\
+    \hline
+    Series Parallel & 8.811 \\
+    \hline
+    \end{tabular}
+\end{center}
+\section{Calculations}
+We begin this section by deriving the precise mathematical formulas for the calculation of the respective $R_{eq}$'s for each circuit diagram.
+Consider Circuit Diagram 1 and 2. Clearly the resistors are simply in series or parallel, so a direct application
+of Equation \ref{eq:2} and \ref{eq:3} will suffice in calculating the $R_{eq}$ for these circuit diagrams. Let us turn our attention to 
+Circuit Diagram 3, once again displayed for clarity:
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz} \draw
+            (0,0) to[R,l_=\small$R_{2} \equal 560\Omega$] (0,2.5)
+            (0,2.5) to[short, -o] (5,2.5)
+            (2.5,0) to[R,l_=\small$R_{1} \equal 330\Omega$] (2.5,2.5)
+            (0,0) to[short] (2.5,0)
+            (2.5,0) to[R,l^=\small$R_{3} \equal 1000\Omega$, -o] (5,0);
+        \end{circuitikz}
+    \caption*{Circuit Diagram 3: Simple Series Parallel}
+    \label{fig:cd3}
+    \end{center}
+    \end{figure}
+Now clearly the resistors $R_1$ and $R_2$ are in parallel, so we apply Equation \ref{eq:3} to obtain
+\begin{equation*}
+    R_{eq(1)}= \frac{R_1R_2}{R_1 + R_2}.
+\end{equation*}
+From here, the resultant equivalent resistor is in series with the resistor $R_3$, so we apply Equation \ref{eq:2}
+to obtain
+\begin{equation} \label{eq:5}
+    R_{eq} = R_{eq(1)} + R_3 = \frac{R_1R_2}{R_1 + R_2} + R_3
+\end{equation}
+to obtain the $R_{eq}$ for the entirety of the system in Circuit Diagram 3. Now let us turn our attention once more to 
+Circuit Diagram 4 below:
+\begin{figure}[H]
+    \begin{center}
+    \begin{circuitikz} \draw
+        (0,0) to[short, -o] (6,0)
+        (0,0) to[R,l_=\footnotesize$R_{6} \equal 330\Omega$] (0,2.5)
+        (2,0) to[R,l_=\footnotesize$R_{5} \equal 560\Omega$] (2,2.5)
+        (4,0) to[R,l_=\footnotesize$R_{2} \equal 560\Omega$] (4,2.5)
+        (0,2.5) to[R,l^=\footnotesize$R_{4} \equal 1000\Omega$] (2,2.5)
+        (2,2.5) to[R,l^=\footnotesize$R_{1} \equal 330\Omega$] (4,2.5)
+        (4,2.5) to[R,l^=\footnotesize$R_{3} \equal 1000\Omega$, -o] (6,2.5);
+    \end{circuitikz}
+    \caption*{Circuit Diagram 4: Complex Series Parallel}
+    \label{fig:cd4}
+\end{center}
+\end{figure}
+This indeed is a very complex setup. The resulting formula will be quite nasty, but do not fear, as solving for $R_{eq}$ iteratively by 
+plugging in values obtained at each step is much simpler. However, we will still write an expression for the formula in terms of the 
+given quantities for the sake of mathematical purity. We have resistors $R_4$ and $R_6$ in series, so    
+\begin{equation*}
+    R_{eq(1)} = R_4+R_6.
+\end{equation*}
+Then we take $R_{eq(1)}$ in parallel with $R_5$ and we get 
+\begin{equation*}
+    R_{eq(2)} = \frac{R_{eq(1)}R_5}{R_{eq(1)}+R_5} = \frac{(R_4+R_6)R_5}{R_4 + R_5 + R_6}.
+\end{equation*}
+We repeat, taking $R_{eq(2)}$ in series with $R_1$, yielding
+\begin{equation*}
+    R_{eq(3)} = R_{eq(2)} + R_1 = \frac{(R_4+R_6)R_5}{R_4 + R_5 + R_6} + R_1, 
+\end{equation*}
+and so the resultant equivalent resistor is in parallel with $R_2$, so yet another application of Equation \ref{eq:3} yields
+\begin{equation*}
+    R_{eq(4)} = \frac{R_{eq(3)}R_2}{R_{eq(3)}+R_2} = \frac{\big(\frac{(R_4+R_6)R_5}{R_4 + R_5 + R_6} + R_1\big)R_2}{\frac{(R_4+R_6)R_5}{R_4 + R_5 + R_6} + R_1 + R_2}.
+\end{equation*}
+Finally, we take $R_{eq(4)}$ in series with $R_3$ to obtain the final expression
+\begin{equation} \label{eq:6}
+    R_{eq} = R_{eq(4)} + R_3 = \frac{\big(\frac{(R_4+R_6)R_5}{R_4 + R_5 + R_6} + R_1\big)R_2}{\frac{(R_4+R_6)R_5}{R_4 + R_5 + R_6} + R_1 + R_2} + R_3.
+\end{equation}
+Our fruitless toil comes to a conclusion.
+\subsection*{Manual Calculations}
+Now we begin the menial task of plugging in numbers into these formulas to get theoretical values for $R_{eq}$.
+We use the data from Table 1, which we once again show for clarity:
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $R_1 = 330\Omega$ & $R_2 = 560\Omega$ & $R_3 = 1000\Omega$ & $R_4 = 1000\Omega$ & $R_5 = 560\Omega$ & $R_6 = 330\Omega$\\ 
+        \hline
+        $325.5\Omega$ & $544\Omega$ & $978\Omega$ & $980\Omega$ & $552\Omega$ & $324.3\Omega$ \\
+        \hline
+    \end{tabular}
+\end{center}
+\vspace{0.5cm}
+Now calculating $R_{eq}$ for Circuit Diagrams 1 and 2 is trivial: take Equations \ref{eq:2} and \ref{eq:3} respectively and simply plug in the data from the table.
+For Circuit Diagram 1, we have 
+\begin{equation*}
+    R_{eq} = 325.5 + 544 = 869.5,
+\end{equation*}
+and for Circuit Diagram 2 we have
+\begin{equation*}
+    R_{eq} = \frac{325.5 \cdot 544}{325.5 + 544} = 203.65.
+\end{equation*}
+Plug in the values of Table 1 into Equation \ref{eq:5} to obtain
+\begin{equation*}
+    R_{eq} = \frac{325.5 \cdot 544}{325.5 + 544} + 978 = 1181.65
+\end{equation*}
+for Circuit Diagram 3. For Circuit Diagram 4, we use the obtrusively long Equation \ref{eq:6} to get
+\begin{equation*}
+    R_{eq} = \frac{\frac{(980+324.3)552}{980+552+324.3}+325.5}{\frac{(980+324.3)552}{980+552+324.3}+325.5+544}+978=1291.28.
+\end{equation*}
+
+Now that we have finished calculating the theoretical $R_{eq}$'s, we turn our attention to manually calculating the measured $R_{eq}$'s
+by Ohm's Law. Ohm's Law (or Equation \ref{eq:1}) states that $V=IR$, or $R=\frac{V}{I}$. Here the voltage remains at a constant $15 V$, so for Circuit Diagram 1,
+$R_{eq} = \frac{15V}{17.1mA} = 877.2\Omega$, $R_{eq} = \frac{15V}{71.2mA} = 210.7\Omega$ for Circuit Diagram 2, 
+$R_{eq} = \frac{15V}{12.6mA} = 1190.48\Omega$ for Circuit Diagram 3, and finally $R_{eq} = \frac{15V}{11.6mA} = 1293.1\Omega$ for
+Circuit Diagram 4.
+
+Calculating percent differences is also a tedious task: apply Equation \ref{eq:4} four times to the data above.
+For Circuit Diagram 1, we have
+\begin{equation*}
+    \text{Percent Difference} = \frac{\mid \! 869.5-877.2  \mid}{\frac{\mid 869.5+877.2 \mid}{2}} \cdot 100\% = 0.88\%,
+\end{equation*}
+for Circuit Diagram 2
+\begin{equation*}
+    \text{Percent Difference} = \frac{\mid \!203.65 - 210.7 \mid}{\frac{\mid 203.65 + 210.7 \mid}{2}} \cdot 100\% = 3.39\%,
+\end{equation*}
+for Circuit Diagram 3
+\begin{equation*}
+    \text{Percent Difference} = \frac{\mid \! 1181.65-1190.48  \mid}{\frac{\mid  1181.65+1190.48  \mid}{2}} \cdot 100\% = 0.74\%,
+\end{equation*}
+and finally for Circuit Diagram 4
+\begin{equation*}
+    \text{Percent Difference} = \frac{\mid \! 1291.28-1293.1  \mid}{\frac{\mid  1291.28+1293.1  \mid}{2}} \cdot 100\% = 0.14\%,
+\end{equation*}
+which concludes the calculations portion of this lab report.
+\section{Discussion of Results and Error Analysis}
+There are several possible sources of error of this experiment. The first is the inherent internal resistance of the wires and 
+resistors themselves- although theoretically they match up with the Ohm reading indicated in the manual, there will always be a tolerance error
+of about $(\pm 5\%)$ in the resistors themselves. This is indicated by the color of the last band of the resistor, since in this experiment they
+were all gold, the error was within the $(\pm 5\%)$ threshold. Now to further minimize error we used the measured values of the resistance of the resistors to calculate 
+the theoretical $R_{eq}$'s, however, further sources of error within the experiment persist. One of them is the equipment- things like how accurate
+the DMM is in measuring current, how close the voltage the power supply puts out is to $15V$, the quality of the circuit board, how strong the lightbuls are, and so on.
+In our particular experiment, a faulty circuit board led to confusion in Part B of the experiment- the lightbulb not receiving the current first shone much brighter than the
+one that was supposed to be brighter. 
+
+Furthermore, the ambient tempurature of the room also affects current and therefore voltage and resistance. Conditions will never be 
+$100\%$ ideal, and therefore there will always be error within the experiment. However, our results were relatively good, with extremely low percent differences,
+the lowest being $0.14\%$ and the highest being $3.39\%$, which is still incredibly low (and much much higher than the other percent differences too). 
+The average percent difference was $1.29\%$, showing that even with the many sources of error listed above the experiment prove to be quite accurate and true to the 
+theoretical results. 
+\section{Conclusion}
+It appears as if it is time for this lab report to reach a conclusion. We have considered several equations of relative importance, such
+as Ohm's Law and resistors in series and parallel, and learned about equivalent resistors and how they can be used to simply resistor circuit
+calculations. We verified that the resistance of resistors in series added additively, while 
+resistors in parallel added reciprocally experimentally. We also studied more complex circuit diagrams and dove into how to calculated equivalent resistors for such systems.
+There was also a section demonstrating the effect of current on the strength of various lightbulbs.
+
+
+Based off of the extremely low percent errors, our results seem to completely support the theory behind the calcution of $R_{eq}$ for
+various resistor setups. Such errors can possibly be eliminated or reduced with better equipment, ideal room conditions, and more precise resistors. 
+However not all of these options are available to an undergraduate physics lab section (some may not even be available to research labs), and yet our measured results were
+still quite spot on with the theoretical values calculated. This means that the method used is precise enough to obtain such a low percent error (average of $1.29\%$), and therefore
+sufficiently accurate. We conclude that resistors do indeed follow Ohm's Law, equivalent resistors for resistors in series and parallel are indeed calculated the way that we derived in the introduction,
+and that modern physics as we know it is indeed somewhat accurate.
+\end{document}

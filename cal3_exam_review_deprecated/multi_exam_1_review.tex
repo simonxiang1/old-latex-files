@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, IEEEtrantools}
+\usepackage{amsthm}
+
+\title{Calculus III Review}
+\author{Simon Xiang}
+\date{\today}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{thm}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\section{Vectors}
+Vectors are elements of something called a \textit{vector space}, which in essence are subsets of $\mathbb{R}^n$.
+A typical vector can be notated several ways:
+\begin{equation}
+    \langle a,b,c \rangle \quad = \quad a\boldsymbol{\hat{i}} + b\boldsymbol{\hat{j}} + c\boldsymbol{\hat{k}}
+\end{equation}
+are the two most typical examples of how they're notated. $\boldsymbol{\hat{i}},\boldsymbol{\hat{j}},$ and $\boldsymbol{\hat{k}}$
+are called the \textit{unit vectors} of $\mathbb{R}^3$. This is because every vector is just the unit vectors multiplied
+by some scalar quantity, hence the notation. In fact, the entirety of $\mathbb{R}^3$ can be expressed through adding and
+multiplying the unit vectors, something known as a \textit{linear combination} of $\boldsymbol{\hat{i}},\boldsymbol{\hat{j}},$ and $\boldsymbol{\hat{k}}$.
+
+The vector $\vec{PQ}$ representing the distance betweent two points $P, Q \in \mathbb{R}^3$ where $P = (p_1,p_2,p_3)$ and $Q = 
+(q_1,q_2,q_3)$ is equal to 
+\begin{equation}
+    \langle q_1-p_1, \, q_2-p_2, \, q_3-p_3 \rangle , 
+\end{equation}
+ where $P$ is the base of the vector and $Q$ is the tip of the vector. A vector in the form $\langle a,b,c \rangle$ is the same
+ as the vector between $(0,0,0)$ and $(a,b,c)$. 
+
+ Where the vector is placed in $\mathbb{R}^3$ is irrelevant. Let $P=(1,2,3)$ and $Q=(4,6,5), (a,b,c)=(3,4,2)$. Then 
+ $\vec{PQ}$ is equivalent to $\langle a,b,c \rangle$, even though they lie in different "parts" of the plane.
+
+ The length or magnitude of a vector is defined by 
+\begin{equation}
+  \lvert \vec{PQ} \rvert = \sqrt{(q_1-p_1)^2 + (q_2-p_2)^2 + (q_3-p_3)^2}.    
+\end{equation}
+This formula can be thought of as the distance between two far corners of a cube, where one of the edges of a right 
+triangle is $\sqrt{a^2+b^2}$ and the other is $c$. This intuition is helpful when we eventually 
+talk about the arc length of curves. 
+
+A vector divided by its length will give a vector pointing in the same direction as the original vector, but having 
+a length of one. This is called the \textit{directional unit vector} of a vector $\vec{v}$, and is given by 
+\begin{equation}
+    \frac{\vec{v}}{\lvert v \rvert}.
+\end{equation}
+
+
+\end{document}

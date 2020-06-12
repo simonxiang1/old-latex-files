@@ -1,0 +1,519 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, IEEEtrantools}
+\usepackage{amsthm}
+
+\title{Representation of Mathematical Expressions in \LaTeX}
+\author{Simon Xiang}
+\date{\today}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\maketitle
+
+\section{Limits}
+
+\textbf{Example 1.1 }(Algebraic approach)\textbf{.} Consider the limit
+\begin{equation*}
+    \lim_{x \to 0} \frac{x}{3-\sqrt{x+9}}.
+\end{equation*}
+First, reduce the expression by completing the square, since directly plugging in the value for which
+the limit converges into the equation will yield $0/0$, which is complete nonsense. 
+\begin{equation*}
+\begin{split}
+    \frac{x}{3-\sqrt{x+9}}\quad&=\quad\frac{x(3+\sqrt{x+9})}{(3-\sqrt{x+9})(3+\sqrt{x+9})}\\
+    &=\quad\frac{x(3+\sqrt{x+9})}{9-(\sqrt{x+9})^2}\\
+    &=\quad\frac{x(3+\sqrt{x+9})}{-x}\\
+    &=\quad-3-\sqrt{x+9}.\\
+\end{split}
+\end{equation*}
+Therefore, we can safely say that the expressions $\frac{x}{3-\sqrt{x+9}}$ and $-3-\sqrt{x+9}$
+are equivalent. Hence, the limit can be simply evaluated by plugging in the value that the limit
+converges to into the second expression for $x$.
+\begin{equation*}
+\begin{split}
+    \lim_{x \to 0} \frac{x}{3-\sqrt{x+9}}\quad&=\quad\lim_{x \to 0} -3-\sqrt{x+9}\\
+    &=\quad-3-\sqrt{0+9}\\
+    &=\quad-3-\sqrt{9}\\
+    &=\quad-6\\
+\end{split}
+\end{equation*}
+Thus
+\begin{equation*}
+    \lim_{x \to 0} \frac{x}{3-\sqrt{x+9}}\quad=\quad-6.
+\end{equation*}
+
+\noindent\textbf{Example 1.2 }(L'hopital's Rule)\textbf{.}
+Assuming knowledge of L'Hopital's Rule, one basic limit that first-year Calculus students
+are often told to memorize is
+\begin{equation*}
+    \lim_{x \to 0} \frac{\sin (x)}{x} = 1.
+\end{equation*}
+However, with a working knowledge of derivatives and L'Hopital's rule, we can prove that 
+the value of this limit is indeed $1$. First, let us state L'Hopital's rule.
+
+\begin{definition}{\textit{(L'Hopital's rule).}}
+    Let $f(x)$ and $g(x)$ be differentiable functions where $g(x)\neq0$. If
+\begin{equation*}
+    \lim_{x \to c} \frac{f(x)}{g(x)} = L \quad\ni\quad c, L \in \mathbb{R}\cup\{-\infty,+\infty\},
+\end{equation*}
+and either of
+\begin{equation*}
+    \lim_{x \to c} f(x)=\lim_{x \to c} g(x)=0,\quad\lim_{x \to c} |f(x)|=\lim_{x \to c} |g(x)|=\infty
+\end{equation*}
+are true, then
+\begin{equation*}
+    \lim_{x \to c} \frac{f(x)}{g(x)}\quad=\quad\lim_{x \to c} \frac{f'(x)}{g'(x)}\quad=\quad L.
+\end{equation*}
+\end{definition}
+
+If we let $f(x)=\sin(x)$ and $g(x)=x$, then evaluating $\lim_{x \to 0} \sin(x)$ and $\lim_{x \to 0} x$
+both yield $0$ as the limit, therefore the function is in the perfect form to directly apply L'Hopital's rule.
+Let us do so.
+\begin{equation*}
+\begin{split}
+    \lim_{x \to 0} \frac{\sin(x)}{x}\quad&=\quad\lim_{x \to 0} \frac{\frac{d}{dx}\sin(x)}{\frac{d}{dx}x}\\
+    &=\quad\lim_{x \to 0} \frac{\cos(x)}{1}\\
+    &=\quad\frac{\cos(0)}{1}\\
+    &=\quad1\\
+\end{split}
+\end{equation*}
+Therefore we have verified using L'Hopital's rule that the limit
+\begin{equation*}
+    \lim_{x \to 0} \frac{\sin (x)}{x} = 1.
+\end{equation*}
+is indeed true.
+
+\section{Derivatives}
+\noindent\textbf{Example 2.1 }(Chain, product, and quotient rule)\textbf{.}
+In a moment of genius, I realized I would only have to type one example instead of three if I used 
+a derivative problem that involved the product, quotient, \textit{and} the chain rule!
+
+\begin{definition}{\textit{(Product rule).}}
+Let $f(x)=g(x)\cdot h(x)$, where $g(x)$ and $h(x)$ are both differentiable functions of $x$. Then
+\begin{equation*}
+    f'(x)\quad=\quad (g'(x)\cdot h(x)) + (h'(x)\cdot g(x)).
+\end{equation*}
+\end{definition}
+
+\begin{definition}{\textit{(Quotient rule).}}
+Let $f(x)=\frac{g(x)}{h(x)}$, where $g(x)$ and $h(x)$ are both differentiable functions of $x$, %
+and $h(x)\neq0$. Then
+\begin{equation*}
+    f'(x)\quad=\quad \frac{(g'(x)\cdot h(x)) - (h'(x)\cdot g(x))}{[h(x)]^2}.
+\end{equation*}
+\end{definition}
+
+\begin{definition}{\textit{(Chain rule, standard).}}
+Let $f(x)=g(h(x))$, where $g(x)$ and $h(x)$ are both differentiable functions of $x$. Then
+\begin{equation*}
+    f'(x)\quad=\quad g'(h(x))\cdot h'(x).
+\end{equation*}
+\end{definition}
+
+\begin{definition}{\textit{(Chain rule, composition of functions).}}
+Let $F = f\circ g$, then
+\begin{equation*}
+    F'\quad=\quad (f'\circ g)\cdot g'.
+\end{equation*}
+\end{definition}
+
+\begin{definition}{\textit{(Chain rule, Leibniz notation).}}
+If we have a function such that the variable $y$ depends on the variable $u$, and $u$ depends on the %
+variable $x$, we can safely say that $y$ depends on $x$, and thus 
+\begin{equation*}
+    \frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}.\footnote{I omitted doing two problems because of %
+    laziness yet defined the chain rule three times. Ironic.}
+\end{equation*}
+\end{definition}
+Now that we have all the tools in our toolbox, let us begin to evaluate a particularly nasty derivative. %
+Let
+\begin{equation*}
+    f(x)\quad=\quad\frac{\sin(x^2)\sqrt{e^x+e^{-x}}}{4^x}.
+\end{equation*}
+To solve for $f'(x)$, let $g(x)=\sin(x^2)\sqrt{e^x+e^{-x}}$ and $h(x)=4^x$. Apply the quotient rule to get
+\begin{equation*}
+    f'(x)\quad=\quad\frac{\Big(\frac{d}{dx}\big(\sin(x^2)\sqrt{e^x+e^{-x}}\big)\cdot %
+    4^x\Big)-\Big(\frac{d}{dx}(4^x)\cdot sin(x^2)\sqrt{e^x+e^{-x}}\Big)}{(4^x)^2} 
+\end{equation*}
+To finish solving out the problem, we will need to compute $\frac{d}{dx}\big(\sin(x^2)\sqrt{e^x+e^{-x}}\big)$
+which requires both the product and the chain rule, and $\frac{d}{dx}(4^x)$, which also requires the chain and 
+product rule. Let us compute the easier derivative first, recalling that $e^{\ln(x)}=x$.
+\begin{equation*}
+    \overline f(x) = 4^x = e^{ln(4^x)}.
+\end{equation*}
+Let $u(x) = ln(4^x) = xln(4)$, and therefore $\overline f(u) = e^u$. Set $\overline f = y$, and apply the %
+Leibniz definition of the chain rule. Recall that $\frac{d}{dx}e^x = e^x$ to finish solving for %
+$\overline f'(x)$.
+\begin{equation*}
+    \frac{dy}{du} = e^u,\quad \frac{du}{dx} = ln(4),\quad\frac{dy}{dx} = \frac{dy}{du}\cdot %
+    \frac{du}{dx} = e^u \cdot ln(4) = e^{ln(4^x)}ln(4) = 4^x ln(4)
+\end{equation*}
+Let us define another function $\hat{f}(x) = \sin(x^2)\sqrt{e^x+e^{-x}}$. If we set $\hat{g}(x) = \sin(x^2)$ %
+and $\hat{h}(x) = \sqrt{e^x+e^{-x}}$, we can continue on to apply the product rule. To solve for $\hat{g}'(x)$
+and $\hat{h}'(x)$, the chain rule will need to be applied.
+\begin{equation*}
+\begin{split}
+    \hat{f}'(x) &= \hat{g}'(x)\cdot \hat{h}(x) + \hat{h}'(x)\cdot \hat{g}(x)\\
+    \hat{g}'(x) &= \cos(x^2)\cdot \frac{d}{dx}(x^2) = 2x\cos(x^2)\\
+    \hat{h}'(x) &= \frac{1}{2\sqrt{e^x+e^{-x}}}\cdot \frac{d}{dx}(e^x+e^{-x}) = %
+    \frac{e^x-e^{-x}}{2\sqrt{e^x+e^{-x}}}\\
+    \hat{f}'(x) &= \big(2x\cos(x^2)\cdot \sqrt{e^x+e^{-x}}\big) + %
+    \big(\frac{e^x-e^{-x}}{2\sqrt{e^x+e^{-x}}}\cdot \sin(x^2)\big)
+\end{split}
+\end{equation*}
+Substitute this new information into the original equation to get
+\begin{equation*}
+\begin{split}
+    f'(x) &= \frac{\big(\hat{f}'(x)\cdot \overline f(x)\big) - %
+    \big(\overline f'(x)\cdot \hat{f}(x)\big)}{(\overline f(x))^2}\\
+    &=\frac{\bigg[4^x\bigg(\Big(2x\cos(x^2)\sqrt{e^x+e^{-x}}\Big) + %
+    \Big(\frac{e^x-e^{-x}}{2\sqrt{e^x+e^-x}}\cdot \sin(x^2)\Big)\bigg)\bigg] - %
+    \bigg[ln(4)\cdot 4^x \Big(\sin(x^2)\cdot \sqrt{e^x+e^{-x}}\Big)\bigg]}{4^{2x}}\\
+    &=\frac{\Big((2x\cos(x^2)\sqrt{e^x+e^{-x}}\Big) + %
+    \Big(\frac{e^x-e^{-x}}{2\sqrt{e^x+e^-x}}\cdot \sin(x^2)\Big) - %
+    \Big(ln(4)\cdot 4^x \big(\sin(x^2)\cdot \sqrt{e^x+e^{-x}}\big)\Big)}{4^x}\\
+    &=\frac{2x\cos(x^2)\sqrt{e^x+e^{-x}}}{4^x} + %
+    \frac{(e^x-e^{-x})\sin(x^2)}{2\cdot 4^x\sqrt{e^x+e^{-x}}} - %
+    \frac{ln(4)\sin(x^2)\sqrt{e^x+e^{-x}}}{4^x}.
+\end{split}
+\end{equation*}
+
+\noindent\textbf{Example 2.2 }(Partial derivatives and the chain rule)\textbf{.}
+The multivariate chain takes on a different, yet familiar form when juxtaposed to its 
+single-variable counterpart.
+\begin{definition}{\textit{(Multivariate chain rule).}}
+Let $z = f(x,y)$, where $x$ and $y$ and both functions of $t$. If $z$ is %
+differentiable at $x(t)$, $y(t)$, then
+\begin{equation*}
+    \frac{dz}{dt} = \frac{\partial z}{\partial x}\cdot \frac{dx}{dt} + %
+    \frac{\partial z}{\partial y}\cdot \frac{dy}{dt}.
+\end{equation*}
+\end{definition}
+\noindent Jumping right into the problem, find $\frac{dy}{dx}$ of $x^2\tan(5y) + x^3y^3 %
+= 4x - e^{(x^2+y^2)}$. Hold up. This looks awfully familiar to a concept learned in
+a first-semester Calculus course and nothing like a question that involves partial
+derivatives! However, we can rewrite this as a multivariate function in the form
+$z = f(x,y)$, where $y = \hat{f}(x)$. Therefore, if we wanted to find $\frac{dz}%
+{dx}$, we could apply the multivariate chain rule and obtain the following:
+\begin{equation*}
+\begin{split}
+    \frac{dz}{dx} &= \frac{\partial f}{\partial x}\cdot \frac{dx}{dx} + \frac{\partial f}%
+    {\partial y}\cdot \frac{dy}{dx} = \frac{\partial f}{\partial x} + \frac{\partial f}%
+    {\partial y}\cdot \frac{dy}{dx}\\
+    \frac{dy}{dx} &= -\frac{\big(\frac{\partial f}{\partial x}\big)}%
+    {\big(\frac{\partial f}{\partial y}\big)} = -\frac{f_x}{f_y}
+\end{split}
+\end{equation*}
+This equation is known as the \textit{Implicit Function Theorem}, and we can apply it here
+to take the implicit derivative of the given function. Rearrage the equation as such to
+obtain a zero on one side: $x^2\tan(5y) + x^3y^3 - 4x + e^{x^2+y^2} = 0$. Now we just have
+to solve for $f_x$ and $f_y$ and plug it into our newly obtained formula to finish the question.
+\begin{equation*}
+\begin{split}
+    f_x &= 2x\tan(5y) + 3x^2y^3 - 4 + 2xe^{(x^2+y^2)}\\
+    f_y &= 5x^2\sec^2(5y) + 3y^2x^3 + 2ye^{(x^2+y^2)}\\
+    \frac{dy}{dx} &= -\frac{f_x}{f_y} = -\frac{2x\tan(5y) + 3x^2y^3 - 4 + 2xe^{(x^2+y^2)}}%
+    {5x^2\sec^2(5y) + 3y^2x^3 + 2ye^{(x^2+y^2)}}
+\end{split}
+\end{equation*}
+
+\section{Integrals}
+\noindent\textbf{Example 3.1 }(Difficult integration)\textbf{.}
+I was going to make separate sections for matrix operations and integration, but in yet
+another stroke of genius I realized we can just solve integration problems using basic
+linear algebra! Here we attempt an infamous integral.
+\begin{equation*}
+    \int\!\sqrt{\tan(x)}\,dx
+\end{equation*}
+The substitution to be used is not immediately clear, and the later part of this integral
+involves a particularly nasty case of partial fractions, which makes this such a 
+challenging integral. Jumping right into the question, use the substitution $u = \sqrt{\tan(x)}$
+to reduce the integral to something that partial fractions can be applied on.
+\begin{equation*}
+\begin{split}
+    u = \sqrt{\tan(x)} \qquad u^2 = \tan(x)\\
+    2u\,du = \sec^2(x)\,dx \qquad dx = \frac{2u\,du}{\sec^2(x)} \\
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{gathered}
+    \int\!\sqrt{\tan(x)}\,dx = \int (u)\cdot \big(\frac{2u\,du}{\sec^2(x)}\big) 
+    = \int\!\frac{2u^2\,du}{\sec^2(x)-1+1} = \int\!\frac{2u^2\,du}{\tan^2(x)+1}\\
+    = \int\!\frac{2u^2\,du}{u^4+1}
+\end{gathered}
+\end{equation*}
+
+Now the problem remains of how to factor a polynomial in the form $x^4+1$, which involves a 
+sneaky complete the square operation to put the polynomial into a form that allows us to apply
+the difference of squares formula to factor it. Truly, this question is quite difficult and
+probably should not be assigned as homework for an introductory calculus course (looking at my
+Cal II professor).
+\begin{equation*}
+\begin{gathered}
+    u^4+1\quad=\quad u^4+2u^2+1-2u^2\quad=\quad (u^2+1)-(\sqrt{2}u)^2\\
+    =(u^2+\sqrt{2}u+1)(u^2-\sqrt{2}u+1)
+\end{gathered}
+\end{equation*}
+Now we have to decompose $\frac{2u^2}{(u^2+\sqrt{2}u+1)(u^2-\sqrt{2}u+1)}$ by partial fractions
+which will leave a rather troublesome system of linear equations, thankfully we can solve
+it by simply inverting the resultant matrix to solve for the vector $x$, which can be represented 
+as such: $A\vec{x}=\vec{b} \qquad \vec{x}=A^{-1}\vec{b}$
+\begin{equation*}
+\begin{gathered}
+    \frac{2u^2}{(u^2+\sqrt{2}u+1)(u^2-\sqrt{2}u+1)}  =  \frac{Au+B}{(u^2+\sqrt{2}u+1)}
+    + \frac{Cu+D}{(u^2-\sqrt{2}u+1)}\\
+    = (Au+B)(u^2-\sqrt{2}u+1)+(Cu+D)(u^2+\sqrt{2}u+1)\\
+    = (Au^3-\sqrt{2}Au^2+Au) + (Bu^2-\sqrt{2}Bu+B) + (Cu^3+\sqrt{2}Cu^2+Cu) + (Du^2+\sqrt{2}Du+D)\\
+    = u^3(A+C)+u^2(B-\sqrt{2}A+\sqrt{2}C+D)+u(A-\sqrt{2}B+\sqrt{2}D+C)+(B+D)\\
+    \text{Let}\quad u=0, \quad \text{then} \quad \boxed{(B+D)=0}\\
+    \frac{2u^2}{u} = \frac{u^3(A+C)+u^2(B-\sqrt{2}A+\sqrt{2}C+D)+u(A-\sqrt{2}B+\sqrt{2}D+C)}{u}\\
+    2u = u^2(A+C)+u(B-\sqrt{2}A+\sqrt{2}C+D)+(A-\sqrt{2}B+\sqrt{2}D+C)\\
+    \text{Let}\quad u=0, \quad \text{then} \quad \boxed{(A-\sqrt{2}B+\sqrt{2}D+C)=0}\\
+    \frac{2u}{u} = \frac{u^2(A+C)+u(B-\sqrt{2}A+\sqrt{2}C+D)}{u}\\
+    2 = u(A+C)+(B-\sqrt{2}A+\sqrt{2}C+D)\\
+    \text{Let}\quad u=0, \quad \text{then} \quad \boxed{(B-\sqrt{2}A+\sqrt{2}C+D)=2}\\
+    2 = u(A+C)+2\\
+    (A+C) = \frac{0}{u} = 0\\
+    \boxed{(A+C)=0}
+\end{gathered}
+\end{equation*}
+To complete the partial fraction decomposition, all that's left is to solve the resultant system
+of linear equations. Arrange the equations as such to make it easier to set up the matrix equation:
+\begin{equation*}
+\begin{array}{lclclclcl}
+    A & + & 0 & + & C & + & 0 & = & 0\\
+    -\sqrt{2}A & + & B & + & \sqrt{2}C & + & D & = & 2\\
+    A & + & -\sqrt{2}B & + & C & + & \sqrt{2}D & = & 0\\
+    0 & + & B & + & 0 & + & D & = & 0  
+\end{array}
+\end{equation*}
+Now rewrite this system as a matrix and invert the matrix to finish solving for $A, B, C$ and $D$.
+\[
+\begin{gathered}
+A = \begin{bmatrix}
+    1 & 0 & 1 & 0\\
+    -\sqrt{2} & 1 & \sqrt{2} & 1\\
+    1 & -\sqrt{2} & 1 & \sqrt{2}\\
+    0 & 1 & 0 & 1
+\end{bmatrix}, \qquad
+\vec{x} = \begin{bmatrix}
+    A\\
+    B\\
+    C\\
+    D
+\end{bmatrix}, \qquad
+\vec{b} = \begin{bmatrix}
+    0\\
+    2\\
+    0\\
+    0
+\end{bmatrix}\\
+A\vec{x} = \vec{b}, \qquad \vec{x} = A^{-1}\vec{b}
+\end{gathered}
+\]
+Now we could have solved this system with row reduction, but I am an avid hater of row reduction,
+and so we invert the matrix to solve the system instead. By extension, we're not calculating this
+inverse with the $[A\,|\,I]\quad \overrightarrow{row\,reduction} \quad[I\,|\,A^{-1}]$ method, but
+using the method involving determinants and the adjugate matrix instead, where
+\begin{equation*}
+    A^{-1} = \frac{1}{det(A)}adj(A).
+\end{equation*}
+In order to calculate the determinant of the matrix, perform a cofactor expansion along the first 
+row, then along the third row for the resultant two matrices. 
+\[
+\begin{gathered}
+\begin{vmatrix}
+    1 & 0 & 1 & 0\\
+    -\sqrt{2} & 1 & \sqrt{2} & 1\\
+    1 & -\sqrt{2} & 1 & \sqrt{2}\\
+    0 & 1 & 0 & 1
+\end{vmatrix}
+= 1\cdot
+\begin{vmatrix}
+    1 & \sqrt{2} & 1\\
+    -\sqrt{2} & 1 & \sqrt{2}\\
+    1 & 0 & 1
+\end{vmatrix} + 1\cdot
+\begin{vmatrix}
+    -\sqrt{2} & 1 & 1\\
+    1 & -\sqrt{2} &\sqrt{2}\\
+    0 & 1 & 1
+\end{vmatrix}\\
+= \left(1 \cdot \begin{vmatrix}
+    \sqrt{2} & 1\\
+    1 & \sqrt{2}
+\end{vmatrix} + 1\cdot \begin{vmatrix}
+    1 & \sqrt{2}\\
+    -\sqrt{2} & 1
+\end{vmatrix}\right) + \left(-1\cdot\begin{vmatrix}
+    -\sqrt{2} & 1\\
+    1 & \sqrt{2}
+\end{vmatrix} + 1\cdot \begin{vmatrix}
+    -\sqrt{2} & 1\\
+    1 & -\sqrt{2}
+\end{vmatrix}\right)\\
+=\left(1+3\right) + \left(3+1\right)\\
+=8
+\end{gathered}
+\]
+To compute the adjugate matrix, we would need to calculate fourteen more 3x3 determinants for each
+coordinate of the matrix to complete the matrix of minors. However, such computations are trivial
+and left to the reader as an exercise. Thus, we have the matrix of minors as such:
+\begin{equation*}
+\begin{bmatrix}
+    4 & -2\sqrt{2} & 4 & 2\sqrt{2}\\
+    2\sqrt{2} & 0 & -2\sqrt{2} & 0\\
+    0 & 2\sqrt{2} & 0 & -2\sqrt{2}\\
+    -2\sqrt{2} & 4 & 2\sqrt{2} & 4
+\end{bmatrix}
+\end{equation*}
+Multiply the matrix of minors by the ``checkerboard'' pattern to find the matrix of cofactors, then
+take the transpose of the resulting matrix to get the adjugate matrix of $A$.
+\[
+\begin{gathered}
+\begin{bmatrix}
+    4 & -2\sqrt{2} & 4 & 2\sqrt{2}\\
+    2\sqrt{2} & 0 & -2\sqrt{2} & 0\\
+    0 & 2\sqrt{2} & 0 & -2\sqrt{2}\\
+    -2\sqrt{2} & 4 & 2\sqrt{2} & 4
+\end{bmatrix} \quad \Longrightarrow \quad \begin{bmatrix}
+    4 & 2\sqrt{2} & 4 & -2\sqrt{2}\\
+    -2\sqrt{2} & 0 & 2\sqrt{2} & 0\\
+    0 & -2\sqrt{2} & 0 & 2\sqrt{2}\\
+    2\sqrt{2} & 4 & -2\sqrt{2} & 4
+\end{bmatrix}\\
+\begin{bmatrix}
+    4 & 2\sqrt{2} & 4 & -2\sqrt{2}\\
+    -2\sqrt{2} & 0 & 2\sqrt{2} & 0\\
+    0 & -2\sqrt{2} & 0 & 2\sqrt{2}\\
+    2\sqrt{2} & 4 & -2\sqrt{2} & 4
+\end{bmatrix}^T \quad = \quad \begin{bmatrix}
+    4 & -2\sqrt{2} & 0 & 2\sqrt{2}\\
+    2\sqrt{2} & 0 & -2\sqrt{2} & 4\\
+    4 & 2\sqrt{2} & 0 & -2\sqrt{2}\\
+    -2\sqrt{2} & 0 & 2\sqrt{2} & 4
+\end{bmatrix}
+\end{gathered}
+\] 
+Now that we have both the adjugate matrix and the determinant, we can divide the adjugate matrix
+by the determinant of $A$ to get $A^{-1}$.
+\[
+\begin{gathered}
+    A^{-1} = \frac{1}{det(A)}adj(A) = \frac{\begin{bmatrix}
+        4 & -2\sqrt{2} & 0 & 2\sqrt{2}\\
+        2\sqrt{2} & 0 & -2\sqrt{2} & 4\\
+        4 & 2\sqrt{2} & 0 & -2\sqrt{2}\\
+        -2\sqrt{2} & 0 & 2\sqrt{2} & 4
+    \end{bmatrix}}{8}\\
+    =\begin{bmatrix}
+        \frac{1}{2} & -\frac{1}{2\sqrt{2}} & 0 & \frac{1}{2\sqrt{2}}\\
+        \frac{1}{2\sqrt{2}} & 0 & -\frac{1}{2\sqrt{2}} & \frac{1}{2}\\
+        \frac{1}{2} & \frac{1}{2\sqrt{2}} & 0 & -\frac{1}{2\sqrt{2}}\\
+        -\frac{1}{2\sqrt{2}} & 0 & \frac{1}{2\sqrt{2}} & \frac{1}{2}
+    \end{bmatrix}
+\end{gathered}
+\]
+From here, all that remains is to multiply the inverted matrix by the vector $\vec{b}$ to obtain
+the solution vector $\vec{x}$.
+\begin{equation*}
+\begin{gathered}
+\vec{x} = A^{-1}\vec{b} = \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2\sqrt{2}} & 0 & \frac{1}{2\sqrt{2}}\\
+    \frac{1}{2\sqrt{2}} & 0 & -\frac{1}{2\sqrt{2}} & \frac{1}{2}\\
+    \frac{1}{2} & \frac{1}{2\sqrt{2}} & 0 & -\frac{1}{2\sqrt{2}}\\
+    -\frac{1}{2\sqrt{2}} & 0 & \frac{1}{2\sqrt{2}} & \frac{1}{2}
+\end{bmatrix}\cdot \begin{bmatrix}
+    0\\
+    2\\
+    0\\
+    0
+\end{bmatrix} = \begin{bmatrix}
+    -\frac{1}{2\sqrt{2}}\\
+    0\\
+    \frac{1}{2\sqrt{2}}\\
+    0
+\end{bmatrix} \cdot 2 = \begin{bmatrix}
+    -\frac{1}{\sqrt{2}}\\
+    0\\
+    \frac{1}{\sqrt{2}}\\
+    0
+\end{bmatrix}\\
+\begin{bmatrix}
+    A\\
+    B\\
+    C\\
+    D
+\end{bmatrix} = \begin{bmatrix}
+    -\frac{1}{\sqrt{2}}\\
+    0\\
+    \frac{1}{\sqrt{2}}\\
+    0
+\end{bmatrix} \qquad A = -\frac{1}{\sqrt{2}} \qquad B = 0 \qquad C = \frac{1}{\sqrt{2}} %
+\qquad D = 0\\
+\frac{Au+B}{(u^2+\sqrt{2}u+1)} + \frac{Cu+D}{(u^2-\sqrt{2}u+1)} = %
+\frac{-\frac{1}{\sqrt{2}}u+0}{(u^2+\sqrt{2}u+1)}
++ \frac{\frac{1}{\sqrt{2}}u+)}{(u^2-\sqrt{2}u+1)}\\
+=\boxed{\frac{u}{\sqrt{2}(u^2-\sqrt{2}u+1)} - \frac{u}{\sqrt{2}(u^2+\sqrt{2}u+1)}}
+\end{gathered}
+\end{equation*}
+To finish the problem, simply integrate the newly obtained expression and plug back in 
+$\sqrt{\tan(x)}$ for $u$. Integrating this expression requires splitting the integral
+so that the left half can be integrated with a simple u-sub and the right half with a 
+complete the square, which looks like this: $u = \frac{1}{2}(2u-\sqrt{2})+\frac{\sqrt{2}}{2}$
+for the left portion and $u = \frac{1}{2}(2u+\sqrt{2})-\frac{\sqrt{2}}{2}$ for the right.
+\begin{equation*}
+\begin{gathered}
+    \int\! \left(\frac{u}{\sqrt{2}(u^2-\sqrt{2}u+1)} - \frac{u}{\sqrt{2}(u^2+\sqrt{2}u+1)}\right)\,du\\
+\end{gathered}
+\end{equation*}
+\begin{equation*}
+\begin{gathered}
+    =\frac{1}{\sqrt{2}}\int\! \left(\frac{\frac{1}{2}(2u-\sqrt{2})+\frac{\sqrt{2}}{2}}{\sqrt{2}(u^2-\sqrt{2}u+1)}\right)\,du - %
+    \frac{1}{\sqrt{2}}\int\! \left(\frac{\frac{1}{2}(2u+\sqrt{2})-\frac{\sqrt{2}}{2}}{\sqrt{2}(u^2+\sqrt{2}u+1)}\right)\,du\\
+    =\frac{1}{2\sqrt{2}}\int\! \left(\frac{2u-\sqrt{2}}{(u^2-\sqrt{2}u+1)}\right)\,du + %
+    \frac{1}{2}\int\! \left(\frac{1}{(u^2-\sqrt{2}u+1)}\right)\,du  \\
+    -\frac{1}{2\sqrt{2}}\int\! \left(\frac{2u+\sqrt{2}}{(u^2+\sqrt{2}u+1)}\right)\,du + %
+    \frac{1}{2}\int\! \left(\frac{1}{(u^2+\sqrt{2}u+1)}\right)\,du\\
+    \textrm{Let $v=u^2-\sqrt{2}u+1,\quad dv = (2u-\sqrt{2}) \,du$ \qquad and \qquad $w=u^2+\sqrt{2}u+1, %
+    \quad dw=(2u+\sqrt{2}) \,du$}\\
+    =\frac{1}{2\sqrt{2}}\int\! \left(\frac{dv}{v}\right) + %
+    \frac{1}{2}\int\! \left(\frac{1}{(u-\frac{\sqrt{2}}{2})^2+\frac{1}{2}}\right)\,du
+    -\frac{1}{2\sqrt{2}}\int\! \left(\frac{dw}{w}\right) + %
+    \frac{1}{2}\int\! \left(\frac{1}{(u+\frac{\sqrt{2}}{2})^2+\frac{1}{2}}\right)\,du\\
+    \textrm{Let $\hat{v}=u-\frac{\sqrt{2}}{2},\quad d\hat{v} = du$ \qquad and \qquad %
+    $\hat{w}=u+\frac{\sqrt{2}}{2},\quad d\hat{w} = du$}\\
+    =\frac{1}{2\sqrt{2}}\ln(v) + \frac{1}{2}\int\! \left(\frac{d\hat{v}}{\hat{v}^2+\frac{1}{2}}\right)
+    -\frac{1}{2\sqrt{2}}\ln(w) + \frac{1}{2}\int\! \left(\frac{d\hat{w}}{\hat{w}^2+\frac{1}{2}}\right) + C\\
+    =\frac{1}{2\sqrt{2}}\ln(v) - \frac{1}{2\sqrt{2}}\ln(w) + %
+    \frac{1}{2}\int\! 2\left(\frac{d\hat{v}}{(\sqrt{2}\hat{v})^2+1}\right) +
+    \frac{1}{2}\int\! 2\left(\frac{d\hat{v}}{(\sqrt{2}\hat{w})^2+1}\right) + C\\
+    =\frac{1}{2\sqrt{2}}\ln(v) - \frac{1}{2\sqrt{2}}\ln(w) + 
+    \frac{\sqrt{2}}{2}\arctan(\sqrt{2}\hat{v}) + \frac{\sqrt{2}}{2}\arctan(\sqrt{2}\hat{w}) + C
+\end{gathered}
+\end{equation*}
+The integral is almost finished! All that remains is to plug back in the dummy variables used to 
+obtain our final answer.
+\begin{equation*}
+\begin{gathered}
+    \frac{1}{2\sqrt{2}}\ln(v) - \frac{1}{2\sqrt{2}}\ln(w) + 
+    \frac{\sqrt{2}}{2}\arctan(\sqrt{2}\hat{v}) + \frac{\sqrt{2}}{2}\arctan(\sqrt{2}\hat{w}) + C\\
+    =\frac{1}{2\sqrt{2}}\ln(u^2-\sqrt{2}u+1) - \frac{1}{2\sqrt{2}}\ln(u^2+\sqrt{2}u+1) + \\
+    \frac{\sqrt{2}}{2}\arctan\left(\sqrt{2}\left(u-\frac{\sqrt{2}}{2}\right)\right) + %
+    \frac{\sqrt{2}}{2}\arctan\left(\sqrt{2}\left(u+\frac{\sqrt{2}}{2}\right)\right) + C\\
+    =\frac{1}{2\sqrt{2}}\ln\left(\tan(x)-\sqrt{2\tan(x)}+1\right) - %
+    \frac{1}{2\sqrt{2}}\ln\left(\tan(x)+\sqrt{2\tan(x)}+1\right) + \\
+    \frac{\sqrt{2}}{2}\arctan\left(\sqrt{2\tan(x)}-1\right) + %
+    \frac{\sqrt{2}}{2}\arctan\left(\sqrt{2\tan(x)}+1\right) + C\\
+\end{gathered}
+\end{equation*}
+\tiny
+\begin{equation*}
+\begin{gathered}
+    =\boxed{\frac{\ln\left(\tan(x)-\sqrt{2\tan(x)}+1\right) - \ln\left(\tan(x)+\sqrt{2\tan(x)}+1\right) %
+    + 2\arctan\left(\sqrt{2\tan(x)}-1\right) + 2\arctan\left(\sqrt{2\tan(x)}+1\right)}{2\sqrt{2}} + C}
+\end{gathered}
+\end{equation*}
+\normalsize
+\end{document}
