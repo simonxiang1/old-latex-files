@@ -8,7 +8,7 @@ I don't condone plagiarism! Not sure if these show up on a web search or not, bu
 
 ## This is garbage!!
 
-◯正解! I pretty much learned LaTeX on the spot while making these, now I have the power to write nonsensical statements in LaTeX (which automatically implies that they're correct, since anything that's been TeXed is correct). I'm planning on writing a bunch of new notes on interesting topics (so, no physics) like Abstract Algebra/Algebraic Topology soon, once I finish my vim+LaTeX setup.
+◯正解! I pretty much learned LaTeX on the spot while making these, now I have the power to write nonsensical statements in LaTeX (which automatically implies that they're correct, since anything that's been TeXed is always true). I'm planning on writing a bunch of new notes on interesting topics (so, no physics) like Abstract Algebra/Algebraic Topology soon, once I finish my vim+LaTeX setup.
 
 #### Additional Comments
 
