@@ -1,6 +1,6 @@
 ## What's this?
 
-Old LaTeX files, made primarily for the purpose of learning how to use LaTeX. I can only recommend you read physics lab report 6 (the others are not as entertaining). Please read it if you like dry mathematics humor. Each project has its own directory, the source code is in the .tex file and the output is simply \<name\>.pdf.
+Old LaTeX files, made primarily for the purpose of learning how to use LaTeX. I can only recommend you read physics lab report 6, located in physics_lab_reports/electro_lab6_report (the others are not as entertaining). Please read it if you like dry mathematics humor. Each project has its own directory, the source code is in the .tex file and the output is simply \<name\>.pdf.
 
 ## Don't plagiarize
 
