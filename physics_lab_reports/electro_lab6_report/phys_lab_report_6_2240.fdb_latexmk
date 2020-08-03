@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1593527308 "phys_lab_report_6_2240.tex" "phys_lab_report_6_2240.pdf" "phys_lab_report_6_2240" 1593578078
+["pdflatex"] 1595636904 "phys_lab_report_6_2240.tex" "phys_lab_report_6_2240.pdf" "phys_lab_report_6_2240" 1595636904
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1591545468 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1591545468 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1591545468 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -193,13 +193,13 @@
   "/usr/share/texmf-dist/tex/latex/url/url.sty" 1591545468 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1591545468 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1591545468 33301 a3134070eacafb10b1f371612ce2650d ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1593490212 336565 41d82b1fbe23b9c6f23f4db899cd990f ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1593490211 2514042 a56a236ef395b3010d6fbcabf170865a ""
-  "phys_lab_report_6_2240.aux" 1593527309 2556 4939a2a9236bf8872dd43ab759334d74 "pdflatex"
-  "phys_lab_report_6_2240.out" 1593527309 397 8370a9515c446b698179ae4daac7cf57 "pdflatex"
-  "phys_lab_report_6_2240.tex" 1593527307 21563 30760049c05e5712b7a4eb08f9d1ce27 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1593995460 336565 41d82b1fbe23b9c6f23f4db899cd990f ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1593995445 2514043 0b6efa3df81e0875ed18e86693a3df09 ""
+  "phys_lab_report_6_2240.aux" 1595636904 2556 4939a2a9236bf8872dd43ab759334d74 "pdflatex"
+  "phys_lab_report_6_2240.out" 1595636904 397 8370a9515c446b698179ae4daac7cf57 "pdflatex"
+  "phys_lab_report_6_2240.tex" 1595636274 21563 30760049c05e5712b7a4eb08f9d1ce27 ""
   (generated)
-  "phys_lab_report_6_2240.pdf"
   "phys_lab_report_6_2240.log"
+  "phys_lab_report_6_2240.pdf"
   "phys_lab_report_6_2240.aux"
   "phys_lab_report_6_2240.out"

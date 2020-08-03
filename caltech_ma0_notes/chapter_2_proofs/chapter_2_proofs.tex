@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\renewcommand\qedsymbol{$\boxtimes$}
+\begin{document}
+
+\section*{Chapter 2}
+\begin{theorem}[De Morgan's Laws]
+     Let $S$ and $T$ be sets. Then 
+     \[
+     \overline{S \cap  T} = \overline{S} \cup \overline{T}.
+     \]
+\end{theorem}
+
+\begin{proof}
+    We want to show that $\overline{S \cap T} \subset \overline{S} \cup \overline{T}$ and $\overline{S} \cup \overline{T} \subset \overline{S \cap T}.$ 
+    Let $x \in \overline{S \cap T},$ then $x \notin S \cap T$ which implies $x \notin S$ and $x \notin T$. Therefore  $x \in \overline{S}$ and $x \in \overline{T}$ by definition, so $x \in \overline{S} \cup \overline{T}.$
+
+    Now let $x \in \overline{S} \cup \overline{T}.$ By way of contradiction, assume that $x \notin \overline{S \cap T}.$ We have $x \in \overline{S}$ or $x \in \overline{T }$ which implies that $x \notin S$ or $x \notin T$ by assumption. But since $x \notin \overline{S \cap T}$, $x \in S \cap T$ which implies that $x \in S$ and $x \in T$, a contradiction. So $x \in \overline{S \cap T}$, and we are done.
+
+\end{proof}
+    
+\end{document}
